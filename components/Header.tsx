@@ -30,7 +30,7 @@ const Header = () => {
 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity font-menu">
+          <Link href="/" className="uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity font-menu" style={{ fontSize: 'calc(1.25rem * 1.3)' }}>
             UX STRIP
           </Link>
 
@@ -54,7 +54,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                 >
                   HOME
                 </Link>
@@ -62,7 +63,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/comics"
-                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                 >
                   COMICS
                 </Link>
@@ -70,7 +72,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                 >
                   ABOUT
                 </Link>
@@ -78,7 +81,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/submit"
-                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                 >
                   SUBMIT
                 </Link>
@@ -94,7 +98,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="block uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   HOME
@@ -103,7 +108,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/comics"
-                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="block uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   COMICS
@@ -112,7 +118,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="block uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   ABOUT
@@ -121,7 +128,8 @@ const Header = () => {
               <li>
                 <Link
                   href="/submit"
-                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  className="block uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
+                  style={{ fontSize: '16px' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   SUBMIT
