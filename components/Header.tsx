@@ -27,7 +27,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity">
+          <Link href="/" className="text-xl uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity font-menu">
             UX STRIP
           </Link>
 
@@ -51,7 +51,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                 >
                   HOME
                 </Link>
@@ -59,7 +59,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/comics"
-                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                 >
                   COMICS
                 </Link>
@@ -67,7 +67,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                 >
                   ABOUT
                 </Link>
@@ -75,7 +75,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/submit"
-                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                 >
                   SUBMIT
                 </Link>
@@ -91,7 +91,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   HOME
@@ -100,7 +100,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/comics"
-                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   COMICS
@@ -109,7 +109,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   ABOUT
@@ -118,7 +118,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/submit"
-                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
+                  className="block uppercase font-menu text-2xl tracking-tighter hover:opacity-80 transition-opacity font-normal"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   SUBMIT
