@@ -27,10 +27,9 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ]
-  },
-  "ampFirstPages": []
-}ic/chunks/webpack.js",
+    ],
+    "/about": [
+      "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/about.js"
     ],
@@ -38,6 +37,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/comics.js"
+    ],
+    "/submit": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/submit.js"
     ]
   },
   "ampFirstPages": []

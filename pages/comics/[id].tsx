@@ -18,7 +18,7 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Comic Display */}
-          <div className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-md mb-8">
+          <div className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
             <div className="relative" style={{ height: '800px' }}>
               <Image
                 src={comic}
@@ -74,7 +74,7 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const comicsDirectory = path.join(process.cwd(), 'public/comics');
-  
+
   // Check if directory exists
   let filenames: string[] = [];
   try {
@@ -82,18 +82,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   } catch (error) {
     console.error('Error reading comics directory:', error);
   }
-  
+
   // Filter for image files only
   const comicFilenames = filenames.filter(filename => {
     const extension = filename.split('.').pop()?.toLowerCase();
     return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
   });
-  
+
   // Create paths for each comic
   const paths = comicFilenames.map(filename => ({
     params: { id: filename.split('.')[0] },
   }));
-  
+
   return {
     paths,
     fallback: false,
@@ -102,7 +102,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const comicsDirectory = path.join(process.cwd(), 'public/comics');
-  
+
   // Check if directory exists
   let filenames: string[] = [];
   try {
@@ -110,36 +110,36 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } catch (error) {
     console.error('Error reading comics directory:', error);
   }
-  
+
   // Filter for image files only
   const comicFilenames = filenames.filter(filename => {
     const extension = filename.split('.').pop()?.toLowerCase();
     return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
   });
-  
+
   // Find the current comic
   const currentComicFilename = comicFilenames.find(
     filename => filename.split('.')[0] === params?.id
   );
-  
+
   if (!currentComicFilename) {
     return {
       notFound: true,
     };
   }
-  
+
   // Find the index of the current comic
   const currentIndex = comicFilenames.indexOf(currentComicFilename);
-  
+
   // Get previous and next comics
-  const prevComic = currentIndex > 0 
-    ? `/comics/${comicFilenames[currentIndex - 1]}` 
+  const prevComic = currentIndex > 0
+    ? `/comics/${comicFilenames[currentIndex - 1]}`
     : null;
-    
-  const nextComic = currentIndex < comicFilenames.length - 1 
-    ? `/comics/${comicFilenames[currentIndex + 1]}` 
+
+  const nextComic = currentIndex < comicFilenames.length - 1
+    ? `/comics/${comicFilenames[currentIndex + 1]}`
     : null;
-  
+
   return {
     props: {
       comic: `/comics/${currentComicFilename}`,

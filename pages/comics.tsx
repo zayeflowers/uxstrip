@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimatedCard from '../components/AnimatedCard';
 
 interface ComicsPageProps {
   comics: string[];
@@ -22,19 +23,21 @@ export default function ComicsPage({ comics }: ComicsPageProps) {
               const comicId = comic.split('/').pop()?.split('.')[0];
 
               return (
-                <div key={comic} className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <Link href={`/comics/${comicId}`} className="block">
-                    <div className="relative" style={{ height: '400px' }}>
-                      <Image
-                        src={comic}
-                        alt={`UX Strip Comic ${comicId}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-contain"
-                      />
-                    </div>
-                  </Link>
-                </div>
+                <AnimatedCard key={comic} delay={index * 0.1}>
+                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                    <Link href={`/comics/${comicId}`} className="block">
+                      <div className="relative" style={{ height: '400px' }}>
+                        <Image
+                          src={comic}
+                          alt={`UX Strip Comic ${comicId}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-contain"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                </AnimatedCard>
               );
             })
           ) : (

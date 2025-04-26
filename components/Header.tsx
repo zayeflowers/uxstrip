@@ -25,8 +25,8 @@ const Header = () => {
         isScrolled ? 'sticky top-0 bg-white/95 backdrop-blur-sm shadow-sm' : ''
       }`}
     >
-      {/* Horizontal borderline at 75px from the top */}
-      <div className="absolute left-0 right-0 h-[1px] bg-[#858484]" style={{ top: '75px' }}></div>
+      {/* Horizontal borderline aligned with menu */}
+      <div className="absolute left-0 right-0 h-[1px] bg-[#858484]" style={{ bottom: '0' }}></div>
 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">

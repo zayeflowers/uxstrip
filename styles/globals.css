@@ -8,11 +8,15 @@
   }
 
   body {
-    @apply bg-white text-textDark font-sans;
+    @apply bg-white text-textDark font-montserrat;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-textDark;
+  h1 {
+    @apply font-bold text-black;
+  }
+
+  h2, h3, h4, h5, h6 {
+    @apply font-bold text-black;
   }
 }
 

@@ -13,7 +13,7 @@ const ComicCard = ({ src, title, date, alt }: ComicCardProps) => {
   const comicId = src.split('/').pop()?.split('.')[0];
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <Link href={`/comics/${comicId}`} className="block h-full">
         <div className="relative" style={{ height: '400px' }}>
           <Image
