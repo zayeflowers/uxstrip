@@ -14,9 +14,10 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
   const comicId = comic.split('/').pop()?.split('.')[0];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#F6F6F6]">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl font-bold text-center mb-8">Comic #{comicId}</h1>
           {/* Comic Display */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
             <div className="relative" style={{ height: '800px' }}>
@@ -32,23 +33,23 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between items-center mt-8">
+          <div className="flex justify-between items-center mt-12">
             {prevComic ? (
               <Link
                 href={`/comics/${prevComic.split('/').pop()?.split('.')[0]}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+                className="px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
               >
                 ← Previous
               </Link>
             ) : (
-              <div className="px-4 py-2 text-gray-400 cursor-not-allowed">
+              <div className="px-6 py-3 bg-white text-gray-400 font-medium border border-gray-300 rounded-md cursor-not-allowed">
                 ← Previous
               </div>
             )}
 
             <Link
               href="/comics"
-              className="px-4 py-2 text-textDark hover:underline"
+              className="px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
             >
               All Comics
             </Link>
@@ -56,12 +57,12 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
             {nextComic ? (
               <Link
                 href={`/comics/${nextComic.split('/').pop()?.split('.')[0]}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+                className="px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
               >
                 Next →
               </Link>
             ) : (
-              <div className="px-4 py-2 text-gray-400 cursor-not-allowed">
+              <div className="px-6 py-3 bg-white text-gray-400 font-medium border border-gray-300 rounded-md cursor-not-allowed">
                 Next →
               </div>
             )}

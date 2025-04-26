@@ -53,20 +53,22 @@ export default function Home({ latestComics, randomImage }: HomeProps) {
       </div>
 
       {/* Comics Section */}
-      <section className="pt-4 pb-8 bg-[#F6F6F6]">
+      <section className="pt-8 pb-8 bg-[#F6F6F6]">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-12">Latest Comics</h2>
+          <div className="flex flex-col gap-20 max-w-4xl mx-auto">
             {latestComics.length > 0 ? (
               latestComics.map((comic, index) => (
                 <AnimatedCard key={comic} delay={index * 0.1}>
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Comic #{index + 1}</h2>
                     <Link href={`/comics/${comic.split('/').pop()?.split('.')[0]}`} className="block">
-                      <div className="relative" style={{ height: '300px' }}>
+                      <div className="relative" style={{ height: '500px' }}>
                         <Image
                           src={comic}
                           alt={`UX Strip Comic ${index + 1}`}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          sizes="100vw"
                           className="object-contain"
                         />
                       </div>
@@ -75,15 +77,15 @@ export default function Home({ latestComics, randomImage }: HomeProps) {
                 </AnimatedCard>
               ))
             ) : (
-              <div className="col-span-3 text-center py-12">
+              <div className="text-center py-12">
                 <p className="text-gray-500 text-lg">No comics found. Check back soon!</p>
               </div>
             )}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-16 mb-8">
             <Link
               href="/comics"
-              className="inline-block text-textDark font-medium hover:underline transition-colors text-lg"
+              className="inline-block px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors text-lg"
             >
               View All Comics →
             </Link>

@@ -11,13 +11,13 @@ interface ComicsPageProps {
 
 export default function ComicsPage({ comics }: ComicsPageProps) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#F6F6F6]">
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-12">
           Comics
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
               const comicId = comic.split('/').pop()?.split('.')[0];
@@ -25,13 +25,14 @@ export default function ComicsPage({ comics }: ComicsPageProps) {
               return (
                 <AnimatedCard key={comic} delay={index * 0.1}>
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Comic #{index + 1}</h2>
                     <Link href={`/comics/${comicId}`} className="block">
-                      <div className="relative" style={{ height: '400px' }}>
+                      <div className="relative" style={{ height: '500px' }}>
                         <Image
                           src={comic}
                           alt={`UX Strip Comic ${comicId}`}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          sizes="100vw"
                           className="object-contain"
                         />
                       </div>
@@ -41,7 +42,7 @@ export default function ComicsPage({ comics }: ComicsPageProps) {
               );
             })
           ) : (
-            <div className="col-span-3 text-center py-12 border border-gray-200 rounded-lg">
+            <div className="text-center py-12 border border-gray-200 rounded-lg">
               <p className="text-gray-500 text-lg">No comics found. Check back soon!</p>
               <p className="text-gray-400 mt-2">
                 Add comic images to the /public/comics folder to see them here.
