@@ -5,28 +5,27 @@ import fs from 'fs';
 import path from 'path';
 import ComicCard from '../components/ComicCard';
 import Logo from '../components/Logo';
-import RotatingImage from '../components/RotatingImage';
+import RandomImage from '../components/RandomImage';
 import AnimatedCard from '../components/AnimatedCard';
 
 interface HomeProps {
   latestComics: string[];
-  rotatingImages: string[];
+  randomImage: string;
 }
 
-export default function Home({ latestComics, rotatingImages }: HomeProps) {
+export default function Home({ latestComics, randomImage }: HomeProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-6 md:py-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-6xl mx-auto">
-            {rotatingImages.length > 0 && (
+            {randomImage && (
               <div className="w-full md:w-5/12">
-                <RotatingImage
-                  images={rotatingImages}
-                  interval={5000}
+                <RandomImage
+                  src={randomImage}
                   className="aspect-square w-full h-auto max-w-sm mx-auto"
-                  alt="UX Strip Rotating Image"
+                  alt="UX Strip Image"
                 />
               </div>
             )}
@@ -124,18 +123,26 @@ export const getStaticProps: GetStaticProps = async () => {
     console.error('Error reading rotate directory:', error);
   }
 
-  // Filter for image files only and create full paths
-  const rotatingImages = rotateFilenames
+  // Filter for image files only
+  const imageFilenames = rotateFilenames
     .filter(filename => {
       const extension = filename.split('.').pop()?.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
-    })
-    .map(filename => `/rotate/${filename}`);
+    });
+
+  // Select a random image from the rotate directory
+  let randomImage = '';
+  if (imageFilenames.length > 0) {
+    const randomIndex = Math.floor(Math.random() * imageFilenames.length);
+    randomImage = `/rotate/${imageFilenames[randomIndex]}`;
+  }
 
   return {
     props: {
       latestComics,
-      rotatingImages,
+      randomImage,
     },
+    // Revalidate every hour to potentially show a different image
+    revalidate: 3600,
   };
 };
