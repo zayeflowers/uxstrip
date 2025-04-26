@@ -1,15 +1,30 @@
 {
   "name": "uxstrip",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "UX Strip - A comic archive for UX-related comics",
+  "dependencies": {
+    "next": "^15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
   "devDependencies": {
-    "tailwindcss": "^4.1.4"
+    "@types/node": "^22.15.2",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.31",
+    "serve": "^14.2.4",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.8.3"
   }
 }
