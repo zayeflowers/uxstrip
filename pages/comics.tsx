@@ -16,15 +16,15 @@ export default function ComicsPage({ comics }: ComicsPageProps) {
           Comics
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
               const comicId = comic.split('/').pop()?.split('.')[0];
 
               return (
-                <div key={comic} className="bg-white rounded-lg overflow-hidden border border-gray-200">
+                <div key={comic} className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                   <Link href={`/comics/${comicId}`} className="block">
-                    <div className="relative aspect-square">
+                    <div className="relative" style={{ height: '400px' }}>
                       <Image
                         src={comic}
                         alt={`UX Strip Comic ${comicId}`}

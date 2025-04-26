@@ -21,10 +21,13 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full z-50 transition-all duration-300 py-6 ${
+      className={`w-full z-50 transition-all duration-300 py-6 relative ${
         isScrolled ? 'sticky top-0 bg-white/95 backdrop-blur-sm shadow-sm' : ''
       }`}
     >
+      {/* Horizontal borderline at 75px from the top */}
+      <div className="absolute left-0 right-0 h-[1px] bg-[#858484]" style={{ top: '75px' }}></div>
+
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity font-menu">

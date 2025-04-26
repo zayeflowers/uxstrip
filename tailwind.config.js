@@ -14,9 +14,14 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         menu: ['"Montserrat Subrayada"', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       letterSpacing: {
         tighter: '-0.04em', // -4%
+        tagline: '-0.5px',
+      },
+      fontWeight: {
+        extralight: '275',
       },
     },
   },
