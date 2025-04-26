@@ -34,8 +34,8 @@ export default function Home({ latestComics, rotatingImages }: HomeProps) {
             <div className="w-full md:w-7/12 flex items-center">
               <p className="font-montserrat max-w-xl"
                  style={{
-                   fontSize: '48px',
-                   lineHeight: '65px',
+                   fontSize: 'clamp(24px, 5vw, 48px)',
+                   lineHeight: 'clamp(32px, 6vw, 65px)',
                    letterSpacing: '-0.04em',
                    fontWeight: 275,
                    color: '#000000'
