@@ -18,6 +18,7 @@ yarn-error.log*
 # Build files
 /build
 /dist
+/.next
 
 # Cache
 .cache/
