@@ -5,12 +5,14 @@ import fs from 'fs';
 import path from 'path';
 import ComicCard from '../components/ComicCard';
 import Logo from '../components/Logo';
+import RotatingImage from '../components/RotatingImage';
 
 interface HomeProps {
   latestComics: string[];
+  rotatingImages: string[];
 }
 
-export default function Home({ latestComics }: HomeProps) {
+export default function Home({ latestComics, rotatingImages }: HomeProps) {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
@@ -19,11 +21,22 @@ export default function Home({ latestComics }: HomeProps) {
           <div className="mb-8 relative">
             <Logo size="large" />
           </div>
-          <div className="text-center max-w-2xl">
+          <div className="text-center max-w-2xl mb-12">
             <p className="text-lg md:text-xl text-textBody leading-relaxed">
               A comic series about design, dysfunction, and digital delusions.
             </p>
           </div>
+
+          {rotatingImages.length > 0 && (
+            <div className="w-full max-w-2xl mx-auto">
+              <RotatingImage
+                images={rotatingImages}
+                interval={5000}
+                className="aspect-square w-full h-auto"
+                alt="UX Strip Rotating Image"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -69,17 +82,18 @@ export default function Home({ latestComics }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const comicsDirectory = path.join(process.cwd(), 'public/comics');
+  const rotateDirectory = path.join(process.cwd(), 'public/rotate');
 
-  // Check if directory exists
-  let filenames: string[] = [];
+  // Check if comics directory exists
+  let comicFilenames: string[] = [];
   try {
-    filenames = fs.readdirSync(comicsDirectory);
+    comicFilenames = fs.readdirSync(comicsDirectory);
   } catch (error) {
     console.error('Error reading comics directory:', error);
   }
 
   // Get the latest comic (or none if there aren't any)
-  const latestComics = filenames
+  const latestComics = comicFilenames
     .filter(filename => {
       const extension = filename.split('.').pop()?.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
@@ -87,9 +101,26 @@ export const getStaticProps: GetStaticProps = async () => {
     .slice(0, 1)
     .map(filename => `/comics/${filename}`);
 
+  // Get rotating images
+  let rotateFilenames: string[] = [];
+  try {
+    rotateFilenames = fs.readdirSync(rotateDirectory);
+  } catch (error) {
+    console.error('Error reading rotate directory:', error);
+  }
+
+  // Filter for image files only and create full paths
+  const rotatingImages = rotateFilenames
+    .filter(filename => {
+      const extension = filename.split('.').pop()?.toLowerCase();
+      return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
+    })
+    .map(filename => `/rotate/${filename}`);
+
   return {
     props: {
       latestComics,
+      rotatingImages,
     },
   };
 };
