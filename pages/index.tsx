@@ -15,9 +15,9 @@ interface HomeProps {
 
 export default function Home({ latestComics, rotatingImages }: HomeProps) {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-6 md:py-8">
+      <section className="py-6 md:py-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-6xl mx-auto">
             {rotatingImages.length > 0 && (
@@ -48,13 +48,13 @@ export default function Home({ latestComics, rotatingImages }: HomeProps) {
       </section>
 
       {/* Horizontal divider line */}
-      <div className="relative">
+      <div className="relative bg-[#F6F6F6]">
         <div className="absolute left-0 right-0 h-[1px] bg-[#858484]"></div>
         <div className="py-4"></div>
       </div>
 
       {/* Comics Section */}
-      <section className="pt-4 pb-8">
+      <section className="pt-4 pb-8 bg-[#F6F6F6]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {latestComics.length > 0 ? (

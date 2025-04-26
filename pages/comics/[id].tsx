@@ -14,7 +14,7 @@ export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProp
   const comicId = comic.split('/').pop()?.split('.')[0];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Comic Display */}

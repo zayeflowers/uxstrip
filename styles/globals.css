@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-white text-textDark font-montserrat;
+    @apply bg-[#F6F6F6] text-textDark font-montserrat;
   }
 
   h1 {

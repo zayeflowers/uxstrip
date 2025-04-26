@@ -11,7 +11,7 @@ interface ComicsPageProps {
 
 export default function ComicsPage({ comics }: ComicsPageProps) {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-12">
           Comics

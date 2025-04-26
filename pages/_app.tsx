@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow bg-[#F6F6F6]">
           <PageTransition>
             <Component {...pageProps} />
           </PageTransition>

@@ -21,8 +21,8 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full z-50 transition-all duration-300 py-6 relative ${
-        isScrolled ? 'sticky top-0 bg-white/95 backdrop-blur-sm shadow-sm' : ''
+      className={`w-full z-50 transition-all duration-300 py-6 relative bg-white ${
+        isScrolled ? 'sticky top-0 backdrop-blur-sm shadow-sm' : ''
       }`}
     >
       {/* Horizontal borderline aligned with menu */}
