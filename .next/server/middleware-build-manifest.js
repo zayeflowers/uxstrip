@@ -25,10 +25,10 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/submit": [
+    "/comics": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/submit.js"
+      "static/chunks/pages/comics.js"
     ]
   },
   "ampFirstPages": []
