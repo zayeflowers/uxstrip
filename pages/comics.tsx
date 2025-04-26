@@ -1,7 +1,8 @@
 import { GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import ComicCard from '../components/ComicCard';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ComicsPageProps {
   comics: string[];
@@ -9,29 +10,35 @@ interface ComicsPageProps {
 
 export default function ComicsPage({ comics }: ComicsPageProps) {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-white min-h-screen">
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl md:text-5xl font-comic font-bold text-primary text-center mb-12">
-          Comics Archive
+        <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-12">
+          Comics
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
-              const comicName = comic.split('/').pop()?.split('.')[0];
-              const title = `Comic ${comicName}`;
+              const comicId = comic.split('/').pop()?.split('.')[0];
 
               return (
-                <ComicCard
-                  key={comic}
-                  src={comic}
-                  title={title}
-                  alt={`UX Strip Comic ${comicName}`}
-                />
+                <div key={comic} className="bg-white rounded-lg overflow-hidden border border-gray-200">
+                  <Link href={`/comics/${comicId}`} className="block">
+                    <div className="relative aspect-square">
+                      <Image
+                        src={comic}
+                        alt={`UX Strip Comic ${comicId}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  </Link>
+                </div>
               );
             })
           ) : (
-            <div className="col-span-3 text-center py-12 bg-white rounded-lg shadow-md">
+            <div className="col-span-3 text-center py-12 border border-gray-200 rounded-lg">
               <p className="text-gray-500 text-lg">No comics found. Check back soon!</p>
               <p className="text-gray-400 mt-2">
                 Add comic images to the /public/comics folder to see them here.

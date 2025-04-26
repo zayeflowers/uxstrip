@@ -21,14 +21,14 @@ const Header = () => {
 
   return (
     <header
-      className={`bg-white w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'sticky top-0 shadow-md' : 'shadow-sm'
+      className={`w-full z-50 transition-all duration-300 py-6 ${
+        isScrolled ? 'sticky top-0 bg-white/95 backdrop-blur-sm shadow-sm' : ''
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl md:text-3xl font-comic font-bold text-primary hover:scale-105 transition-transform">
-            UX Strip
+          <Link href="/" className="text-xl uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity">
+            UX STRIP
           </Link>
 
           {/* Mobile menu button */}
@@ -51,33 +51,33 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="font-medium hover:text-primary hover:underline transition-colors"
+                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                 >
-                  Home
+                  HOME
                 </Link>
               </li>
               <li>
                 <Link
                   href="/comics"
-                  className="font-medium hover:text-primary hover:underline transition-colors"
+                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                 >
-                  Comics
+                  COMICS
                 </Link>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="font-medium hover:text-primary hover:underline transition-colors"
+                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                 >
-                  About
+                  ABOUT
                 </Link>
               </li>
               <li>
                 <Link
                   href="/submit"
-                  className="font-medium hover:text-primary hover:underline transition-colors"
+                  className="uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                 >
-                  Submit
+                  SUBMIT
                 </Link>
               </li>
             </ul>
@@ -91,37 +91,37 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className="block font-medium hover:text-primary transition-colors"
+                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Home
+                  HOME
                 </Link>
               </li>
               <li>
                 <Link
                   href="/comics"
-                  className="block font-medium hover:text-primary transition-colors"
+                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Comics
+                  COMICS
                 </Link>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="block font-medium hover:text-primary transition-colors"
+                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  About
+                  ABOUT
                 </Link>
               </li>
               <li>
                 <Link
                   href="/submit"
-                  className="block font-medium hover:text-primary transition-colors"
+                  className="block uppercase font-medium tracking-wider hover:opacity-80 transition-opacity"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Submit
+                  SUBMIT
                 </Link>
               </li>
             </ul>

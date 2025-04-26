@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cloud/smoke background -->
+  <path d="M150 280C220 280 270 230 270 160C270 90 220 40 150 40C80 40 30 90 30 160C30 230 80 280 150 280Z" fill="none" stroke="#333333" stroke-width="2" stroke-dasharray="5 3"/>
+  
+  <!-- Radial lines -->
+  <g stroke="#333333" stroke-width="1">
+    <path d="M150 280L150 300" />
+    <path d="M150 40L150 20" />
+    <path d="M270 160L290 160" />
+    <path d="M30 160L10 160" />
+    <path d="M235 235L250 250" />
+    <path d="M65 85L50 70" />
+    <path d="M235 85L250 70" />
+    <path d="M65 235L50 250" />
+  </g>
+  
+  <!-- UX Strip text -->
+  <g>
+    <!-- UX -->
+    <path d="M80 120L100 160H60L80 120Z" fill="#333333"/>
+    <path d="M120 120L140 160M100 140L140 140" stroke="#333333" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Strip -->
+    <path d="M60 180H140C150 180 160 190 160 200V220C160 230 150 240 140 240H60C50 240 40 230 40 220V200C40 190 50 180 60 180Z" fill="white" stroke="#333333" stroke-width="8"/>
+    <path d="M70 200H130" stroke="#333333" stroke-width="4" stroke-linecap="round"/>
+    <path d="M70 220H130" stroke="#333333" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Characters -->
+  <circle cx="180" cy="140" r="20" fill="white" stroke="#333333" stroke-width="2"/>
+  <circle cx="220" cy="140" r="20" fill="white" stroke="#333333" stroke-width="2"/>
+  
+  <!-- Glasses -->
+  <path d="M170 135H190" stroke="#333333" stroke-width="2"/>
+  <path d="M210 135H230" stroke="#333333" stroke-width="2"/>
+  <path d="M190 135H210" stroke="#333333" stroke-width="2"/>
+  
+  <!-- Eyes -->
+  <circle cx="180" cy="140" r="5" fill="#333333"/>
+  <circle cx="220" cy="140" r="5" fill="#333333"/>
+</svg>
