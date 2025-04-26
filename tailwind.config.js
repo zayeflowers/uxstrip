@@ -8,13 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#3490dc',
-        secondary: '#ffed4a',
-        dark: '#2d3748',
+        primary: '#2196F3',    // Primary Blue
+        secondary: '#FFC107',  // Accent Yellow
+        background: '#FAFAFA', // Background
+        textDark: '#212121',   // Text (Dark)
+        textBody: '#333333',   // Body Text
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        comic: ['Comic Sans MS', 'cursive'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        comic: ['Comic Neue', 'Baloo 2', 'Fredoka', 'cursive'],
+      },
+      scale: {
+        '102': '1.02',
       },
     },
   },

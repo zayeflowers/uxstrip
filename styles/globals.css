@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-gray-50 text-gray-900;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-textBody;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-bold text-textDark;
   }
 }
 
@@ -15,10 +20,33 @@
   .container {
     @apply px-4 mx-auto max-w-7xl;
   }
+
   .btn {
-    @apply px-4 py-2 font-medium rounded-md transition-colors;
+    @apply px-6 py-3 font-medium rounded-md transition-all duration-300 shadow-sm;
   }
+
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
+    @apply bg-primary text-white hover:bg-primary/90 hover:shadow-md hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-textDark hover:bg-secondary/90 hover:shadow-md hover:scale-105;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
