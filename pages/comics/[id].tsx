@@ -141,8 +141,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Find the index of the current comic
   const currentIndex = comicFilenames.indexOf(currentComicFilename);
 
-  // Calculate the comic number (1-based index)
-  const comicNumber = currentIndex + 1;
+  // Calculate the comic number (total comics - index)
+  // Since we sorted newest first, the first comic (index 0) should be the highest number
+  const comicNumber = comicFilenames.length - currentIndex;
 
   // Get previous and next comics (reversed because we sorted newest first)
   const nextComic = currentIndex > 0
