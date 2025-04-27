@@ -78,15 +78,7 @@ const Header = () => {
                   ABOUT
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/submit"
-                  className="uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
-                  style={{ fontSize: '16px' }}
-                >
-                  SUBMIT
-                </Link>
-              </li>
+
             </ul>
           </nav>
         </div>
@@ -125,16 +117,7 @@ const Header = () => {
                   ABOUT
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/submit"
-                  className="block uppercase font-menu tracking-tighter hover:opacity-80 transition-opacity font-normal"
-                  style={{ fontSize: '16px' }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  SUBMIT
-                </Link>
-              </li>
+
             </ul>
           </nav>
         )}

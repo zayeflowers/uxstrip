@@ -2,9 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/comics": "pages/comics.js",
-  "/about": "pages/about.js",
+  "/": "pages/index.js",
   "/comics/[id]": "pages/comics/[id].js",
-  "/submit": "pages/submit.js",
-  "/": "pages/index.js"
+  "/about": "pages/about.js",
+  "/comics": "pages/comics.js"
 }
