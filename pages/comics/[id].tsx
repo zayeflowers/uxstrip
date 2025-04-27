@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
+import SEO from '../../components/SEO';
 
 interface ComicPageProps {
   comic: string;
@@ -16,6 +17,11 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber }: 
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEO
+        title={`Issue #${comicNumber} | UX Strip`}
+        description={`View UX Strip Issue #${comicNumber}. A comic series about design, dysfunction, and digital delusions.`}
+        ogImage={`https://uxstrip.com${comic}`}
+      />
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl font-bold text-center mb-8">Issue #{comicNumber}</h1>

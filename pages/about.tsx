@@ -1,6 +1,12 @@
+import SEO from '../components/SEO';
+
 export default function AboutPage() {
   return (
     <div className="container py-12">
+      <SEO
+        title="About | UX Strip"
+        description="Learn about UX Strip, a comic series about design, dysfunction, and digital delusions created in early 2025."
+      />
       <h1 className="text-4xl font-bold text-center mb-8">
         About UXstrip
       </h1>

@@ -4,6 +4,7 @@ import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
 import AnimatedCard from '../../../components/AnimatedCard';
+import SEO from '../../../components/SEO';
 
 interface PaginatedComicsPageProps {
   comics: string[];
@@ -15,6 +16,10 @@ interface PaginatedComicsPageProps {
 export default function PaginatedComicsPage({ comics, currentPage, totalPages, totalComics }: PaginatedComicsPageProps) {
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEO
+        title={`Comics - Page ${currentPage} | UX Strip`}
+        description={`Browse UX Strip comics - Page ${currentPage} of ${totalPages}. A comic series about design, dysfunction, and digital delusions.`}
+      />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-12">
           Comics - Page {currentPage}

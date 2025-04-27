@@ -7,6 +7,7 @@ import ComicCard from '../components/ComicCard';
 import Logo from '../components/Logo';
 import RandomImage from '../components/RandomImage';
 import AnimatedCard from '../components/AnimatedCard';
+import SEO from '../components/SEO';
 
 interface HomeProps {
   latestComics: string[];
@@ -17,6 +18,10 @@ interface HomeProps {
 export default function Home({ latestComics, randomImage, totalComics }: HomeProps) {
   return (
     <div className="min-h-screen">
+      <SEO
+        title="UX Strip - Comic series about design, dysfunction, and digital delusions"
+        description="A comic series about design, dysfunction, and digital delusions. UX Strip captures the everyday experiences of UX designers with humor and insight."
+      />
       {/* Hero Section */}
       <section className="py-6 md:py-8 bg-white">
         <div className="container mx-auto px-4">
