@@ -20,12 +20,12 @@ export default function ComicsPage({ comics, currentPage, totalPages, totalComic
         title="Comics | UX Strip"
         description="Browse all UX Strip comics. A comic series about design, dysfunction, and digital delusions."
       />
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-12">
+      <div className="container mx-auto px-4 py-8 md:py-16">
+        <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-6 md:mb-12">
           Comics
         </h1>
 
-        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-10 md:gap-20 max-w-4xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
               const comicId = comic.split('/').pop()?.split('.')[0];
@@ -33,9 +33,9 @@ export default function ComicsPage({ comics, currentPage, totalPages, totalComic
               return (
                 <AnimatedCard key={comic} delay={index * 0.1}>
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Issue #{totalComics - ((currentPage - 1) * 7 + index)}</h2>
+                    <h2 className="text-xl font-bold px-4 md:px-6 pt-4 md:pt-6 pb-2 md:pb-3 text-center">Issue #{totalComics - ((currentPage - 1) * 7 + index)}</h2>
                     <Link href={`/comics/${comicId}`} className="block">
-                      <div className="relative" style={{ height: '500px' }}>
+                      <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
                         <Image
                           src={comic}
                           alt={`UX Strip Issue ${totalComics - ((currentPage - 1) * 7 + index)}`}
@@ -61,25 +61,25 @@ export default function ComicsPage({ comics, currentPage, totalPages, totalComic
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center mt-16 mb-8">
-            <div className="flex items-center space-x-2">
+          <div className="flex justify-center mt-8 md:mt-16 mb-4 md:mb-8">
+            <div className="flex items-center space-x-1 md:space-x-2">
               {currentPage > 1 && (
                 <Link
                   href={`/comics/page/${currentPage - 1}`}
-                  className="px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
+                  className="px-3 py-2 md:px-6 md:py-3 text-sm md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
                 >
                   ← Previous
                 </Link>
               )}
 
-              <div className="px-4 py-2 font-medium">
+              <div className="px-2 md:px-4 py-1 md:py-2 text-sm md:text-base font-medium">
                 Page {currentPage} of {totalPages}
               </div>
 
               {currentPage < totalPages && (
                 <Link
                   href={`/comics/page/${currentPage + 1}`}
-                  className="px-6 py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
+                  className="px-3 py-2 md:px-6 md:py-3 text-sm md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
                 >
                   Next →
                 </Link>
