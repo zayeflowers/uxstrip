@@ -8,16 +8,17 @@ interface ComicPageProps {
   comic: string;
   prevComic: string | null;
   nextComic: string | null;
+  comicNumber: number;
 }
 
-export default function ComicPage({ comic, prevComic, nextComic }: ComicPageProps) {
+export default function ComicPage({ comic, prevComic, nextComic, comicNumber }: ComicPageProps) {
   const comicId = comic.split('/').pop()?.split('.')[0];
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold text-center mb-8">Comic #{comicId}</h1>
+          <h1 className="text-2xl font-bold text-center mb-8">Comic #{comicNumber}</h1>
           {/* Comic Display */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
             <div className="relative" style={{ height: '800px' }}>
@@ -112,11 +113,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     console.error('Error reading comics directory:', error);
   }
 
-  // Filter for image files only
-  const comicFilenames = filenames.filter(filename => {
-    const extension = filename.split('.').pop()?.toLowerCase();
-    return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
-  });
+  // Filter for image files only and sort in reverse order (newest first)
+  const comicFilenames = filenames
+    .filter(filename => {
+      const extension = filename.split('.').pop()?.toLowerCase();
+      return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
+    })
+    .sort((a, b) => b.localeCompare(a));
 
   // Find the current comic
   const currentComicFilename = comicFilenames.find(
@@ -132,12 +135,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Find the index of the current comic
   const currentIndex = comicFilenames.indexOf(currentComicFilename);
 
-  // Get previous and next comics
-  const prevComic = currentIndex > 0
+  // Calculate the comic number (1-based index)
+  const comicNumber = currentIndex + 1;
+
+  // Get previous and next comics (reversed because we sorted newest first)
+  const nextComic = currentIndex > 0
     ? `/comics/${comicFilenames[currentIndex - 1]}`
     : null;
 
-  const nextComic = currentIndex < comicFilenames.length - 1
+  const prevComic = currentIndex < comicFilenames.length - 1
     ? `/comics/${comicFilenames[currentIndex + 1]}`
     : null;
 
@@ -146,6 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       comic: `/comics/${currentComicFilename}`,
       prevComic,
       nextComic,
+      comicNumber,
     },
   };
 };

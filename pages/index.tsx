@@ -114,6 +114,8 @@ export const getStaticProps: GetStaticProps = async () => {
       const extension = filename.split('.').pop()?.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
     })
+    // Sort by filename in reverse order (newest first)
+    .sort((a, b) => b.localeCompare(a))
     .slice(0, 3)
     .map(filename => `/comics/${filename}`);
 
