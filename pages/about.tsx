@@ -29,7 +29,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-2xl font-bold mb-4">Want to collaborate or share an idea?</h2>
           <p className="text-gray-700 text-lg">
-            Reach out: <a href="mailto:contact@uxstrip.com" className="text-black hover:underline">contact@uxstrip.com</a>
+            Reach out: <a href="mailto:zaye@uxstrip.com" className="text-black hover:underline">zaye@uxstrip.com</a>
           </p>
         </section>
       </div>
