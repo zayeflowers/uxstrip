@@ -11,9 +11,10 @@ import AnimatedCard from '../components/AnimatedCard';
 interface HomeProps {
   latestComics: string[];
   randomImage: string;
+  totalComics: number;
 }
 
-export default function Home({ latestComics, randomImage }: HomeProps) {
+export default function Home({ latestComics, randomImage, totalComics }: HomeProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -61,12 +62,12 @@ export default function Home({ latestComics, randomImage }: HomeProps) {
               latestComics.map((comic, index) => (
                 <AnimatedCard key={comic} delay={index * 0.1}>
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Comic #{index + 1}</h2>
+                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Issue #{totalComics - index}</h2>
                     <Link href={`/comics/${comic.split('/').pop()?.split('.')[0]}`} className="block">
                       <div className="relative" style={{ height: '500px' }}>
                         <Image
                           src={comic}
-                          alt={`UX Strip Comic ${index + 1}`}
+                          alt={`UX Strip Issue ${totalComics - index}`}
                           fill
                           sizes="100vw"
                           className="object-contain"
@@ -108,15 +109,21 @@ export const getStaticProps: GetStaticProps = async () => {
     console.error('Error reading comics directory:', error);
   }
 
-  // Get the latest comics (up to 3)
-  const latestComics = comicFilenames
+  // Filter for image files only
+  const allComics = comicFilenames
     .filter(filename => {
       const extension = filename.split('.').pop()?.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
     })
     // Sort by filename in reverse order (newest first)
-    .sort((a, b) => b.localeCompare(a))
-    .slice(0, 3)
+    .sort((a, b) => b.localeCompare(a));
+
+  // Get the total number of comics
+  const totalComics = allComics.length;
+
+  // Get the latest comics (up to 7)
+  const latestComics = allComics
+    .slice(0, 7)
     .map(filename => `/comics/${filename}`);
 
   // Get rotating images
@@ -145,6 +152,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       latestComics,
       randomImage,
+      totalComics,
     },
     // Revalidate every hour to potentially show a different image
     revalidate: 3600,

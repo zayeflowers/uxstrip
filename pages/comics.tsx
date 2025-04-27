@@ -9,9 +9,10 @@ interface ComicsPageProps {
   comics: string[];
   currentPage: number;
   totalPages: number;
+  totalComics: number;
 }
 
-export default function ComicsPage({ comics, currentPage, totalPages }: ComicsPageProps) {
+export default function ComicsPage({ comics, currentPage, totalPages, totalComics }: ComicsPageProps) {
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
       <div className="container mx-auto px-4 py-16">
@@ -27,12 +28,12 @@ export default function ComicsPage({ comics, currentPage, totalPages }: ComicsPa
               return (
                 <AnimatedCard key={comic} delay={index * 0.1}>
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Comic #{index + 1}</h2>
+                    <h2 className="text-xl font-bold px-6 pt-6 pb-3 text-center">Issue #{totalComics - ((currentPage - 1) * 7 + index)}</h2>
                     <Link href={`/comics/${comicId}`} className="block">
                       <div className="relative" style={{ height: '500px' }}>
                         <Image
                           src={comic}
-                          alt={`UX Strip Comic ${comicId}`}
+                          alt={`UX Strip Issue ${totalComics - ((currentPage - 1) * 7 + index)}`}
                           fill
                           sizes="100vw"
                           className="object-contain"
@@ -100,14 +101,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   // Filter for image files only and reverse the order (newest first)
-  const allComics = filenames
+  const filteredComics = filenames
     .filter(filename => {
       const extension = filename.split('.').pop()?.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension || '');
     })
     // Sort by filename in reverse order (assuming filenames are sortable)
-    .sort((a, b) => b.localeCompare(a))
-    .map(filename => `/comics/${filename}`);
+    .sort((a, b) => b.localeCompare(a));
+
+  // Calculate total number of comics
+  const totalComics = filteredComics.length;
+
+  // Map to full paths
+  const allComics = filteredComics.map(filename => `/comics/${filename}`);
 
   // Calculate total pages
   const totalPages = Math.ceil(allComics.length / COMICS_PER_PAGE);
@@ -122,6 +128,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       comics,
       currentPage,
       totalPages,
+      totalComics,
     },
   };
 };

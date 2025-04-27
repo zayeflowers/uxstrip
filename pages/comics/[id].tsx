@@ -18,13 +18,13 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber }: 
     <div className="min-h-screen bg-[#F6F6F6]">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold text-center mb-8">Comic #{comicNumber}</h1>
+          <h1 className="text-2xl font-bold text-center mb-8">Issue #{comicNumber}</h1>
           {/* Comic Display */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
             <div className="relative" style={{ height: '800px' }}>
               <Image
                 src={comic}
-                alt={`UX Strip Comic ${comicId}`}
+                alt={`UX Strip Issue ${comicNumber}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 800px"
                 className="object-contain"
