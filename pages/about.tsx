@@ -26,13 +26,6 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Credits</h2>
-          <p className="text-gray-700 mb-2 text-lg">
-            <span className="font-medium">Creator, Writer, Illustrator:</span> Zaye Flowers
-          </p>
-        </section>
-
         <section>
           <p className="text-gray-700 text-lg">
             Contact: <a href="mailto:zaye@uxstrip.com" className="text-black hover:underline">zaye@uxstrip.com</a>
