@@ -35,9 +35,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;275;300;400;500;600;700&family=Montserrat+Subrayada&family=Montserrat:wght@200;275;300;400&family=Comic+Neue:wght@300;400;700&family=Baloo+2:wght@400;500;600;700&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
         <Header />
-        <main className="flex-grow bg-[#F6F6F6]">
+        <main className="flex-grow bg-[#F6F6F6] w-full">
           <PageTransition>
             <Component {...pageProps} />
           </PageTransition>

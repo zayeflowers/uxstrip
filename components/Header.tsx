@@ -26,9 +26,9 @@ const Header = () => {
       }`}
     >
       {/* Horizontal borderline aligned with menu */}
-      <div className="absolute left-0 right-0 h-[1px] bg-[#858484]" style={{ bottom: '0' }}></div>
+      <div className="absolute left-0 right-0 w-full h-[1px] bg-[#858484]" style={{ bottom: '0' }}></div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="uppercase font-bold tracking-wider text-textDark hover:opacity-80 transition-opacity font-menu" style={{ fontSize: 'calc(1.25rem * 1.3)' }}>
             UX STRIP

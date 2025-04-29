@@ -23,8 +23,8 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
         description="A comic series about design, dysfunction, and digital delusions. UX Strip captures the everyday experiences of UX designers with humor and insight."
       />
       {/* Hero Section */}
-      <section className="py-6 md:py-8 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-6 md:py-8 bg-white w-full">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-6xl mx-auto">
             {randomImage && (
               <div className="w-full md:w-5/12">
@@ -53,14 +53,14 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
       </section>
 
       {/* Horizontal divider line */}
-      <div className="relative bg-[#F6F6F6]">
-        <div className="absolute left-0 right-0 h-[1px] bg-[#858484]"></div>
+      <div className="relative bg-[#F6F6F6] overflow-hidden">
+        <div className="absolute left-0 right-0 w-screen h-[1px] bg-[#858484]"></div>
         <div className="py-4"></div>
       </div>
 
       {/* Comics Section */}
-      <section className="pt-4 md:pt-8 pb-4 md:pb-8 bg-[#F6F6F6]">
-        <div className="container mx-auto px-4">
+      <section className="pt-4 md:pt-8 pb-4 md:pb-8 bg-[#F6F6F6] w-full">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-2xl font-bold text-center mb-6 md:mb-12">Latest Comics</h2>
           <div className="flex flex-col gap-10 md:gap-20 max-w-4xl mx-auto">
             {latestComics.length > 0 ? (
