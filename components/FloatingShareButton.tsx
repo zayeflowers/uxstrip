@@ -15,39 +15,39 @@ const FloatingShareButton: React.FC<FloatingShareButtonProps> = ({ url, title, d
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 md:hidden">
+    <div className="fixed bottom-3 right-3 z-50 md:hidden">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-lg p-4 mb-3 animate-fade-in">
-          <ShareButtons 
-            url={url} 
-            title={title} 
+        <div className="bg-white rounded-lg shadow-lg p-2 mb-2 animate-fade-in">
+          <ShareButtons
+            url={url}
+            title={title}
             description={description}
-            iconSize={32}
+            iconSize={28}
             className="flex-wrap justify-center"
           />
-          <button 
+          <button
             onClick={toggleShare}
-            className="mt-2 text-xs text-gray-500 w-full text-center"
+            className="mt-1 text-xs text-gray-500 w-full text-center"
           >
             Close
           </button>
         </div>
       )}
-      
+
       <button
         onClick={toggleShare}
-        className="bg-black text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg"
+        className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
         aria-label="Share"
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
           strokeLinejoin="round"
         >
           <circle cx="18" cy="5" r="3"></circle>
