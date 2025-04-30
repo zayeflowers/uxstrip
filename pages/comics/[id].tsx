@@ -3,17 +3,28 @@ import fs from 'fs';
 import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import SEO from '../../components/SEO';
+import ShareButtons from '../../components/ShareButtons';
+import FloatingShareButton from '../../components/FloatingShareButton';
+import { getComicMetadata, ComicMetadata } from '../../utils/comicUtils';
 
 interface ComicPageProps {
   comic: string;
   prevComic: string | null;
   nextComic: string | null;
   comicNumber: number;
+  metadata: ComicMetadata;
 }
 
-export default function ComicPage({ comic, prevComic, nextComic, comicNumber }: ComicPageProps) {
+export default function ComicPage({ comic, prevComic, nextComic, comicNumber, metadata }: ComicPageProps) {
   const comicId = comic.split('/').pop()?.split('.')[0];
+  const [shareUrl, setShareUrl] = useState<string>('');
+
+  useEffect(() => {
+    // Set the share URL once the component is mounted
+    setShareUrl(`${window.location.origin}/comics/${comicId}`);
+  }, [comicId]);
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
@@ -22,21 +33,48 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber }: 
         description={`View UX Strip Issue #${comicNumber}. A comic series about design, dysfunction, and digital delusions.`}
         ogImage={`https://uxstrip.com${comic}`}
       />
+      {shareUrl && (
+        <FloatingShareButton
+          url={shareUrl}
+          title={`UX Strip - Issue #${comicNumber}`}
+          description={metadata.description || `A comic series about design, dysfunction, and digital delusions.`}
+        />
+      )}
       <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold text-center mb-4 md:mb-8">Issue #{comicNumber}</h1>
           {/* Comic Display */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md mb-4 md:mb-8">
-            <div className="relative" style={{ height: '500px', maxHeight: '70vh', minHeight: '300px' }}>
-              <Image
-                src={comic}
-                alt={`UX Strip Issue ${comicNumber}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 800px"
-                className="object-contain"
-                priority
-              />
+          <div className="mb-4 md:mb-8">
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <div className="relative" style={{ height: '500px', maxHeight: '70vh', minHeight: '300px' }}>
+                <Image
+                  src={comic}
+                  alt={`UX Strip Issue ${comicNumber}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
+            <div className="mt-2 text-right">
+              <h2 className="text-base font-bold">Issue #{comicNumber}</h2>
+              {metadata.publishedDate && (
+                <p className="text-xs text-gray-600">Published: {metadata.publishedDate}</p>
+              )}
+            </div>
+          </div>
+
+          {/* Share Buttons */}
+          <div className="mb-6 md:mb-8 bg-white p-4 rounded-lg shadow-sm">
+            <h3 className="text-lg font-bold mb-3">Share this comic</h3>
+            {shareUrl && (
+              <ShareButtons
+                url={shareUrl}
+                title={`UX Strip - Issue #${comicNumber}`}
+                description={metadata.description || `A comic series about design, dysfunction, and digital delusions.`}
+                iconSize={36}
+              />
+            )}
           </div>
 
           {/* Navigation */}
@@ -154,12 +192,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     ? `/comics/${comicFilenames[currentIndex + 1]}`
     : null;
 
+  // Get comic metadata
+  const comicId = currentComicFilename.split('.')[0];
+  const metadata = getComicMetadata(comicId);
+
   return {
     props: {
       comic: `/comics/${currentComicFilename}`,
       prevComic,
       nextComic,
       comicNumber,
+      metadata,
     },
   };
 };

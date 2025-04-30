@@ -8,9 +8,10 @@ import Logo from '../components/Logo';
 import RandomImage from '../components/RandomImage';
 import AnimatedCard from '../components/AnimatedCard';
 import SEO from '../components/SEO';
+import { getAllComicsWithMetadata, ComicData } from '../utils/comicUtils';
 
 interface HomeProps {
-  latestComics: string[];
+  latestComics: ComicData[];
   randomImage: string;
   totalComics: number;
 }
@@ -65,20 +66,27 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
           <div className="flex flex-col gap-10 md:gap-20 max-w-4xl mx-auto">
             {latestComics.length > 0 ? (
               latestComics.map((comic, index) => (
-                <AnimatedCard key={comic} delay={index * 0.1}>
-                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                    <h2 className="text-xl font-bold px-4 md:px-6 pt-4 md:pt-6 pb-2 md:pb-3 text-center">Issue #{totalComics - index}</h2>
-                    <Link href={`/comics/${comic.split('/').pop()?.split('.')[0]}`} className="block">
-                      <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
-                        <Image
-                          src={comic}
-                          alt={`UX Strip Issue ${totalComics - index}`}
-                          fill
-                          sizes="100vw"
-                          className="object-contain"
-                        />
-                      </div>
-                    </Link>
+                <AnimatedCard key={comic.path} delay={index * 0.1}>
+                  <div className="mb-2">
+                    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                      <Link href={`/comics/${comic.id}`} className="block">
+                        <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
+                          <Image
+                            src={comic.path}
+                            alt={`UX Strip Issue ${comic.number}`}
+                            fill
+                            sizes="100vw"
+                            className="object-contain"
+                          />
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="mt-2 text-right">
+                      <h2 className="text-base font-bold">Issue #{comic.number}</h2>
+                      {comic.metadata.publishedDate && (
+                        <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>
+                      )}
+                    </div>
                   </div>
                 </AnimatedCard>
               ))
@@ -126,10 +134,13 @@ export const getStaticProps: GetStaticProps = async () => {
   // Get the total number of comics
   const totalComics = allComics.length;
 
-  // Get the latest comics (up to 7)
-  const latestComics = allComics
+  // Get the latest comics (up to 7) with paths
+  const latestComicPaths = allComics
     .slice(0, 7)
     .map(filename => `/comics/${filename}`);
+
+  // Get comics with metadata
+  const latestComics = getAllComicsWithMetadata(latestComicPaths);
 
   // Get rotating images
   let rotateFilenames: string[] = [];

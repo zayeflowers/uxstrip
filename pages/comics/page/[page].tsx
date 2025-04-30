@@ -5,9 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import AnimatedCard from '../../../components/AnimatedCard';
 import SEO from '../../../components/SEO';
+import { getAllComicsWithMetadata, ComicData } from '../../../utils/comicUtils';
 
 interface PaginatedComicsPageProps {
-  comics: string[];
+  comics: ComicData[];
   currentPage: number;
   totalPages: number;
   totalComics: number;
@@ -28,24 +29,28 @@ export default function PaginatedComicsPage({ comics, currentPage, totalPages, t
         <div className="flex flex-col gap-10 md:gap-20 max-w-4xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
-              const comicId = comic.split('/').pop()?.split('.')[0];
-              const globalIndex = (currentPage - 1) * 7 + index + 1;
-
               return (
-                <AnimatedCard key={comic} delay={index * 0.1}>
-                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                    <h2 className="text-xl font-bold px-4 md:px-6 pt-4 md:pt-6 pb-2 md:pb-3 text-center">Issue #{totalComics - ((currentPage - 1) * 7 + index)}</h2>
-                    <Link href={`/comics/${comicId}`} className="block">
-                      <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
-                        <Image
-                          src={comic}
-                          alt={`UX Strip Issue ${totalComics - ((currentPage - 1) * 7 + index)}`}
-                          fill
-                          sizes="100vw"
-                          className="object-contain"
-                        />
-                      </div>
-                    </Link>
+                <AnimatedCard key={comic.path} delay={index * 0.1}>
+                  <div className="mb-2">
+                    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                      <Link href={`/comics/${comic.id}`} className="block">
+                        <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
+                          <Image
+                            src={comic.path}
+                            alt={`UX Strip Issue ${comic.number}`}
+                            fill
+                            sizes="100vw"
+                            className="object-contain"
+                          />
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="mt-2 text-right">
+                      <h2 className="text-base font-bold">Issue #{comic.number}</h2>
+                      {comic.metadata.publishedDate && (
+                        <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>
+                      )}
+                    </div>
                   </div>
                 </AnimatedCard>
               );
@@ -152,15 +157,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const totalComics = filteredComics.length;
 
   // Map to full paths
-  const allComics = filteredComics.map(filename => `/comics/${filename}`);
+  const allComicPaths = filteredComics.map(filename => `/comics/${filename}`);
+
+  // Get comics with metadata
+  const allComicsWithMetadata = getAllComicsWithMetadata(allComicPaths);
 
   // Calculate total pages
-  const totalPages = Math.ceil(allComics.length / COMICS_PER_PAGE);
+  const totalPages = Math.ceil(allComicsWithMetadata.length / COMICS_PER_PAGE);
 
   // Get comics for current page
   const startIndex = (currentPage - 1) * COMICS_PER_PAGE;
   const endIndex = startIndex + COMICS_PER_PAGE;
-  const comics = allComics.slice(startIndex, endIndex);
+  const comics = allComicsWithMetadata.slice(startIndex, endIndex);
 
   return {
     props: {
