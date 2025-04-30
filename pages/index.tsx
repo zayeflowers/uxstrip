@@ -60,17 +60,17 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
       </div>
 
       {/* Comics Section */}
-      <section className="pt-4 md:pt-8 pb-4 md:pb-8 bg-[#F6F6F6] w-full">
+      <section className="pt-2 md:pt-8 pb-2 md:pb-8 bg-[#F6F6F6] w-full">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-2xl font-bold text-center mb-6 md:mb-12">Latest Comics</h2>
-          <div className="flex flex-col gap-10 md:gap-20 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-4 md:mb-12">Latest Comics</h2>
+          <div className="flex flex-col gap-6 md:gap-20 max-w-4xl mx-auto">
             {latestComics.length > 0 ? (
               latestComics.map((comic, index) => (
                 <AnimatedCard key={comic.path} delay={index * 0.1}>
-                  <div className="mb-2">
+                  <div className="mb-1">
                     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                       <Link href={`/comics/${comic.id}`} className="block">
-                        <div className="relative" style={{ height: '350px', maxHeight: '60vh', minHeight: '250px' }}>
+                        <div className="relative" style={{ height: '300px', maxHeight: '50vh', minHeight: '200px' }}>
                           <Image
                             src={comic.path}
                             alt={`UX Strip Issue ${comic.number}`}
@@ -81,7 +81,7 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
                         </div>
                       </Link>
                     </div>
-                    <div className="mt-2 text-right">
+                    <div className="mt-1 text-right">
                       <h2 className="text-base font-bold">Issue #{comic.number}</h2>
                       {comic.metadata.publishedDate && (
                         <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>

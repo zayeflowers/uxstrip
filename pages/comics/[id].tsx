@@ -40,12 +40,12 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber, me
           description={metadata.description || `A comic series about design, dysfunction, and digital delusions.`}
         />
       )}
-      <div className="container mx-auto px-4 py-8 md:py-16">
+      <div className="container mx-auto px-4 py-3 md:py-12">
         <div className="max-w-4xl mx-auto">
           {/* Comic Display */}
-          <div className="mb-4 md:mb-8">
+          <div className="mb-3 md:mb-6">
             <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <div className="relative" style={{ height: '500px', maxHeight: '70vh', minHeight: '300px' }}>
+              <div className="relative" style={{ height: '450px', maxHeight: '60vh', minHeight: '250px' }}>
                 <Image
                   src={comic}
                   alt={`UX Strip Issue ${comicNumber}`}
@@ -56,7 +56,7 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber, me
                 />
               </div>
             </div>
-            <div className="mt-2 text-right">
+            <div className="mt-1 text-right">
               <h2 className="text-base font-bold">Issue #{comicNumber}</h2>
               {metadata.publishedDate && (
                 <p className="text-xs text-gray-600">Published: {metadata.publishedDate}</p>
@@ -65,14 +65,14 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber, me
           </div>
 
           {/* Share Buttons */}
-          <div className="mb-6 md:mb-8 bg-white p-4 rounded-lg shadow-sm">
-            <h3 className="text-lg font-bold mb-3">Share this comic</h3>
+          <div className="mb-4 md:mb-6 bg-white p-3 rounded-lg shadow-sm">
+            <h3 className="text-lg font-bold mb-2">Share this comic</h3>
             {shareUrl && (
               <ShareButtons
                 url={shareUrl}
                 title={`UX Strip - Issue #${comicNumber}`}
                 description={metadata.description || `A comic series about design, dysfunction, and digital delusions.`}
-                iconSize={36}
+                iconSize={32}
               />
             )}
           </div>
