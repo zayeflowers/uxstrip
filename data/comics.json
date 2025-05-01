@@ -1,22 +1,22 @@
 {
+  "comic1": {
+    "title": "Issue #1",
+    "publishedDate": "April 26, 2025",
+    "description": "UX Strip Issue #1"
+  },
+  "comic2": {
+    "title": "Issue #2",
+    "publishedDate": "April 27, 2025",
+    "description": "UX Strip Issue #2"
+  },
+  "comic3": {
+    "title": "Issue #3",
+    "publishedDate": "April 28, 2025",
+    "description": "UX Strip Issue #3"
+  },
   "comic4": {
     "title": "Issue #4",
     "publishedDate": "May 1, 2025",
     "description": "UX Strip Issue #4"
-  },
-  "comic5": {
-    "title": "Issue #5",
-    "publishedDate": "April 27, 2025",
-    "description": "UX Strip Issue #5"
-  },
-  "comic6": {
-    "title": "Issue #6",
-    "publishedDate": "April 28, 2025",
-    "description": "UX Strip Issue #6"
-  },
-  "comic7": {
-    "title": "Issue #7",
-    "publishedDate": "April 30, 2025",
-    "description": "UX Strip Issue #7"
   }
 }
