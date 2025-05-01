@@ -60,17 +60,17 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
       </div>
 
       {/* Comics Section */}
-      <section className="pt-2 md:pt-8 pb-2 md:pb-8 bg-[#F6F6F6] w-full">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-2xl font-bold text-center mb-4 md:mb-12">Latest Comics</h2>
-          <div className="flex flex-col gap-6 md:gap-20 max-w-4xl mx-auto">
+      <section className="pt-1 md:pt-6 pb-1 md:pb-6 bg-[#F6F6F6] w-full">
+        <div className="container mx-auto px-2 md:px-6">
+          <h2 className="text-2xl font-bold text-center mb-2 md:mb-8">Latest Comics</h2>
+          <div className="flex flex-col gap-4 md:gap-16 max-w-4xl mx-auto">
             {latestComics.length > 0 ? (
               latestComics.map((comic, index) => (
                 <AnimatedCard key={comic.path} delay={index * 0.1}>
-                  <div className="mb-1">
+                  <div className="mb-0.5">
                     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                       <Link href={`/comics/${comic.id}`} className="block">
-                        <div className="relative" style={{ height: '300px', maxHeight: '50vh', minHeight: '200px' }}>
+                        <div className="relative" style={{ height: '250px', maxHeight: '45vh', minHeight: '180px' }}>
                           <Image
                             src={comic.path}
                             alt={`UX Strip Issue ${comic.number}`}
@@ -81,7 +81,7 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
                         </div>
                       </Link>
                     </div>
-                    <div className="mt-1 text-right">
+                    <div className="mt-0.5 text-right">
                       <h2 className="text-base font-bold">Issue #{comic.number}</h2>
                       {comic.metadata.publishedDate && (
                         <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>
@@ -96,10 +96,10 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
               </div>
             )}
           </div>
-          <div className="text-center mt-8 md:mt-16 mb-4 md:mb-8">
+          <div className="text-center mt-4 md:mt-8 mb-2 md:mb-4">
             <Link
               href="/comics"
-              className="inline-block px-4 py-2 md:px-6 md:py-3 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors text-base md:text-lg"
+              className="inline-block px-2 py-1 md:px-4 md:py-2 bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors text-sm md:text-base"
             >
               View All Comics →
             </Link>

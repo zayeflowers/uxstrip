@@ -15,12 +15,12 @@ const ComicCard = ({ src, title, date, alt, issueNumber }: ComicCardProps) => {
 
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-2 md:pb-3 text-center">
-        <h2 className="text-xl font-bold">{title || `Issue #${issueNumber}`}</h2>
-        {date && <p className="text-sm text-gray-600 mt-1">Published: {date}</p>}
+      <div className="px-2 md:px-4 pt-2 md:pt-4 pb-1 md:pb-2 text-center">
+        <h2 className="text-lg font-bold">{title || `Issue #${issueNumber}`}</h2>
+        {date && <p className="text-xs text-gray-600 mt-0.5">Published: {date}</p>}
       </div>
       <Link href={`/comics/${comicId}`} className="block">
-        <div className="relative" style={{ height: '400px' }}>
+        <div className="relative" style={{ height: '300px' }}>
           <Image
             src={src}
             alt={alt || title}

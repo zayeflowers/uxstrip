@@ -15,19 +15,19 @@ const FloatingShareButton: React.FC<FloatingShareButtonProps> = ({ url, title, d
   };
 
   return (
-    <div className="fixed bottom-3 right-3 z-50 md:hidden">
+    <div className="fixed bottom-2 right-2 z-50 md:hidden">
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-lg p-2 mb-2 animate-fade-in">
+        <div className="bg-white rounded-lg shadow-lg p-1.5 mb-1.5 animate-fade-in">
           <ShareButtons
             url={url}
             title={title}
             description={description}
-            iconSize={28}
+            iconSize={24}
             className="flex-wrap justify-center"
           />
           <button
             onClick={toggleShare}
-            className="mt-1 text-xs text-gray-500 w-full text-center"
+            className="mt-0.5 text-xs text-gray-500 w-full text-center"
           >
             Close
           </button>
@@ -36,13 +36,13 @@ const FloatingShareButton: React.FC<FloatingShareButtonProps> = ({ url, title, d
 
       <button
         onClick={toggleShare}
-        className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
+        className="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg"
         aria-label="Share"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

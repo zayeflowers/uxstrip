@@ -21,20 +21,20 @@ export default function PaginatedComicsPage({ comics, currentPage, totalPages, t
         title={`Comics - Page ${currentPage} | UX Strip`}
         description={`Browse UX Strip comics - Page ${currentPage} of ${totalPages}. A comic series about design, dysfunction, and digital delusions.`}
       />
-      <div className="container mx-auto px-4 py-3 md:py-12">
-        <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-4 md:mb-12">
+      <div className="container mx-auto px-2 py-1 md:py-8">
+        <h1 className="text-2xl uppercase font-bold tracking-wider text-center mb-2 md:mb-8">
           Comics - Page {currentPage}
         </h1>
 
-        <div className="flex flex-col gap-6 md:gap-20 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-4 md:gap-16 max-w-4xl mx-auto">
           {comics.length > 0 ? (
             comics.map((comic, index) => {
               return (
                 <AnimatedCard key={comic.path} delay={index * 0.1}>
-                  <div className="mb-1">
+                  <div className="mb-0.5">
                     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                       <Link href={`/comics/${comic.id}`} className="block">
-                        <div className="relative" style={{ height: '300px', maxHeight: '50vh', minHeight: '200px' }}>
+                        <div className="relative" style={{ height: '250px', maxHeight: '45vh', minHeight: '180px' }}>
                           <Image
                             src={comic.path}
                             alt={`UX Strip Issue ${comic.number}`}
@@ -45,7 +45,7 @@ export default function PaginatedComicsPage({ comics, currentPage, totalPages, t
                         </div>
                       </Link>
                     </div>
-                    <div className="mt-1 text-right">
+                    <div className="mt-0.5 text-right">
                       <h2 className="text-base font-bold">Issue #{comic.number}</h2>
                       {comic.metadata.publishedDate && (
                         <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>
@@ -67,25 +67,25 @@ export default function PaginatedComicsPage({ comics, currentPage, totalPages, t
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center mt-8 md:mt-16 mb-4 md:mb-8">
+          <div className="flex justify-center mt-4 md:mt-8 mb-2 md:mb-4">
             <div className="flex items-center space-x-1 md:space-x-2">
               {currentPage > 1 && (
                 <Link
                   href={currentPage === 2 ? '/comics' : `/comics/page/${currentPage - 1}`}
-                  className="px-3 py-2 md:px-6 md:py-3 text-sm md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
+                  className="px-1.5 py-0.5 md:px-4 md:py-2 text-xs md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
                 >
                   ← Previous
                 </Link>
               )}
 
-              <div className="px-2 md:px-4 py-1 md:py-2 text-sm md:text-base font-medium">
+              <div className="px-1 md:px-3 py-0.5 md:py-1.5 text-xs md:text-sm font-medium">
                 Page {currentPage} of {totalPages}
               </div>
 
               {currentPage < totalPages && (
                 <Link
                   href={`/comics/page/${currentPage + 1}`}
-                  className="px-3 py-2 md:px-6 md:py-3 text-sm md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
+                  className="px-1.5 py-0.5 md:px-4 md:py-2 text-xs md:text-base bg-white text-textDark font-medium border border-textDark rounded-md hover:bg-textDark hover:text-white transition-colors"
                 >
                   Next →
                 </Link>
