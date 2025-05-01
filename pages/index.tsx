@@ -70,7 +70,7 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
                   <div className="mb-0.5">
                     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                       <Link href={`/comics/${comic.id}`} className="block">
-                        <div className="relative" style={{ height: '565px', maxHeight: '80vh', minHeight: '405px' }}>
+                        <div className="relative" style={{ height: '425px', maxHeight: '70vh', minHeight: '305px' }}>
                           <Image
                             src={comic.path}
                             alt={`UX Strip Issue ${comic.number}`}

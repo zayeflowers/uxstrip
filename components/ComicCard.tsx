@@ -20,7 +20,7 @@ const ComicCard = ({ src, title, date, alt, issueNumber }: ComicCardProps) => {
         {date && <p className="text-xs text-gray-600 mt-0.5">Published: {date}</p>}
       </div>
       <Link href={`/comics/${comicId}`} className="block">
-        <div className="relative" style={{ height: '675px' }}>
+        <div className="relative" style={{ height: '510px' }}>
           <Image
             src={src}
             alt={alt || title}

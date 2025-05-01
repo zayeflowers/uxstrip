@@ -45,7 +45,7 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber, me
           {/* Comic Display */}
           <div className="mb-1 md:mb-4">
             <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="relative" style={{ height: '790px', maxHeight: '85vh', minHeight: '405px' }}>
+              <div className="relative" style={{ height: '590px', maxHeight: '75vh', minHeight: '305px' }}>
                 <Image
                   src={comic}
                   alt={`UX Strip Issue ${comicNumber}`}

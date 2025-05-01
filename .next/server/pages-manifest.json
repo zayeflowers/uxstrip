@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/comics/[id]": "pages/comics/[id].js",
-  "/": "pages/index.js",
-  "/comics": "pages/comics.js"
+  "/comics": "pages/comics.js",
+  "/": "pages/index.js"
 }
