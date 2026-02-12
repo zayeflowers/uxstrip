@@ -83,9 +83,6 @@ export default function Home({ latestComics, randomImage, totalComics }: HomePro
                     </div>
                     <div className="mt-0.5 text-right">
                       <h2 className="text-base font-bold">Issue #{comic.number}</h2>
-                      {comic.metadata.publishedDate && (
-                        <p className="text-xs text-gray-600">Published: {comic.metadata.publishedDate}</p>
-                      )}
                     </div>
                   </div>
                 </AnimatedCard>

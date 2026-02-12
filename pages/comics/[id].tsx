@@ -58,9 +58,6 @@ export default function ComicPage({ comic, prevComic, nextComic, comicNumber, me
             </div>
             <div className="mt-0.5 text-right">
               <h2 className="text-base font-bold">Issue #{comicNumber}</h2>
-              {metadata.publishedDate && (
-                <p className="text-xs text-gray-600">Published: {metadata.publishedDate}</p>
-              )}
             </div>
           </div>
 
