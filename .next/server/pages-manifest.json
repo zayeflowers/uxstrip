@@ -1,8 +1,11 @@
 {
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
   "/": "pages/index.js",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/about": "pages/about.html",
   "/comics": "pages/comics.js",
-  "/comics/[id]": "pages/comics/[id].js"
+  "/comics/[id]": "pages/comics/[id].js",
+  "/comics/page/[page]": "pages/comics/page/[page].js",
+  "/404": "pages/404.html"
 }
